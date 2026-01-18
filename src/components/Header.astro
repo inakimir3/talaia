@@ -1,0 +1,135 @@
+<header id="site-header" class="fixed w-full top-0 left-0 z-50 px-10 py-3 transition-colors duration-300">
+    <article class="w-full flex items-center justify-between">
+        <a href="#">
+            <img
+                id="header-logo"
+                src="/images/logo-talaia-white.svg"
+                data-logo-white="/images/logo-talaia-white.svg"
+                data-logo-dark="/images/logo-talaia.svg"
+                alt="Logo de Talaia"
+                class="h-24 w-auto transition-all duration-300"
+            />
+        </a>
+
+        <nav class="flex items-center gap-6 header-nav">
+            <!-- <a href="#" class="header-link transition duration-300">Reservas</a> -->
+
+            <a href="#" class="header-phone px-4 rounded-full py-3 flex items-center gap-2 transition duration-300">
+                <i class="fa-solid fa-phone fa-sm"></i>
+                <span>+34 666 332 384</span>
+            </a>
+
+            <div class="c-btn">
+                <i class="fa-solid fa-bars-staggered fa-lg c-icon"></i>
+            </div>
+        </nav>
+    </article>
+</header>
+
+
+<style>
+    #site-header {
+        background: transparent;
+    }
+
+    .header-link {
+        color: white;
+    }
+
+    .header-link:hover {
+        color: black;
+    }
+
+    .header-phone {
+        background: white;
+        color: black;
+    }
+
+    .header-phone:hover {
+        background: black;
+        color: white;
+    }
+
+
+
+    /* ===== Estado SCROLL ===== */
+    #site-header.scrolled {
+        background: white;
+    }
+
+    #site-header.scrolled .header-link {
+        color: black;
+    }
+
+    #site-header.scrolled .header-link:hover {
+        color: #555;
+    }
+
+    #site-header.scrolled .header-phone {
+        background: black;
+        color: white;
+    }
+
+    #site-header.scrolled .header-phone:hover {
+        background: white;
+        color: black;
+        border: 1px solid black;
+    }
+
+    #site-header.scrolled .c-btn {
+        background: black;
+    }
+
+    .c-btn {
+        width: 48px;
+        height: 48px;
+        background: black;
+        color: white;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .c-icon {
+        animation: back 0.3s ease forwards;
+    }
+
+    .c-btn:hover .c-icon {
+        animation: forward 0.3s ease forwards;
+    }
+
+    @keyframes forward {
+        0%   { transform: translateX(0); opacity: 1; }
+        40%  { transform: translateX(120%); }
+        41%  { transform: translateX(-120%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+
+    @keyframes back {
+        0%   { transform: translateX(0); opacity: 1; }
+        40%  { transform: translateX(-120%); }
+        41%  { transform: translateX(120%); opacity: 0; }
+        100% { transform: translateX(0); opacity: 1; }
+    }
+</style>
+
+<script>
+    const header = document.getElementById('site-header');
+    const logo = document.getElementById('header-logo');
+
+    const logoWhite = logo.dataset.logoWhite;
+    const logoDark = logo.dataset.logoDark;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+            logo.src = logoDark;
+        } else {
+            header.classList.remove('scrolled');
+            logo.src = logoWhite;
+        }
+    });
+</script>

@@ -1,0 +1,75 @@
+---
+
+import { useTranslations } from "../i18n/util";
+import { languages } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLang as keyof typeof languages);
+
+const localizedLink = (path: string) => {
+  if (currentLang === "es") return path;
+  return `/${currentLang}${path}`;
+};
+---
+<div class="swiper relative mt-5 lg:mt-0">
+    <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/images/college3.webp" class="max-w-80 w-full object-cover aspect-674/619 rounded-xl"  />
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/college1.webp" class="max-w-80 w-full object-cover aspect-674/619 rounded-xl"  />
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/jaume1.webp" class="max-w-80 w-full object-cover aspect-674/619 rounded-xl"  />
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/college2.webp" class="max-w-80 w-full object-cover aspect-674/619 rounded-xl"  />
+            </div>  
+            <div class="swiper-slide">
+                <img src="/images/jaume3.webp" class="max-w-80 w-full object-cover aspect-674/619 rounded-xl"  />
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/college4.webp" class="max-w-80 w-full object-cover aspect-674/619 rounded-xl"  />
+            </div>  
+    </div>
+    <div class="swiper-pagination absolute -bottom-11"></div>
+</div>
+
+<style>
+    .swiper {
+        width: 100%;
+    }
+
+   
+</style>
+
+<script>
+import Swiper from 'swiper/bundle';
+
+import 'swiper/css/bundle';
+
+
+const swiper = new Swiper('.swiper', {
+  spaceBetween: 16,
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: false,
+  },
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true,
+  },
+  watchOverflow: true,
+  // Mobile (default)
+  slidesPerView: 1.2,
+  centeredSlides: false,
+
+  breakpoints: {
+    1024: { // lg
+      slidesPerView: 2,
+      centeredSlides: true,
+    }
+  }
+});
+
+
+</script>
