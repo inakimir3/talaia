@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import '@fontsource-variable/public-sans';
+import "sal.js/dist/sal.css";
 ---
 
 <!doctype html>
@@ -19,7 +20,15 @@ import '@fontsource-variable/public-sans';
 		<script src="https://kit.fontawesome.com/44dc33ce77.js" crossorigin="anonymous"></script>
 	</head>
 	<body>
-        <slot />	
+        <slot />
+		<script>
+			import sal from "sal.js";
+
+			document.addEventListener("DOMContentLoaded", () => {
+				sal();
+			});
+		</script>
+	
 	</body>
 	
 </html>
@@ -33,3 +42,4 @@ import '@fontsource-variable/public-sans';
 		height: 100%;
 	}
 </style>
+
