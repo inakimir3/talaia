@@ -39,104 +39,128 @@
 </div>
 
 
-
-
 <style>
-    #site-header {
-        background: transparent;
-    }
+    /* ===== Header inicial ===== */
+#site-header {
+    background: transparent;
+    height: fit-content /* Altura inicial */
+    padding: 10px 40px; /* Padding inicial */
+    transition: background 0.3s, height 0.3s, padding 0.3s;
+}
 
-    .header-link {
-        color: white;
-    }
+#header-logo {
+    height: 96px; /* Tamaño inicial */
+    transition: height 0.3s;
+}
 
-    .header-link:hover {
-        color: black;
-    }
+.header-nav {
+    gap: 24px; /* Espaciado inicial entre elementos del nav */
+    transition: gap 0.3s;
+}
 
-    .header-phone {
-        background: white;
-        color: black;
-    }
+.header-link {
+    color: white;
+}
 
-    .header-phone:hover {
-        background: black;
-        color: white;
-        transform: scale(1.05);
+.header-link:hover {
+    color: black;
+}
 
-    }
+.header-phone {
+    background: white;
+    color: black;
+    transition: background 0.3s, color 0.3s, transform 0.3s, border 0.3s;
+}
 
+.header-phone:hover {
+    background: black;
+    color: white;
+    transform: scale(1.05);
+}
 
+/* ===== Estado SCROLL ===== */
+#site-header.scrolled {
+    background: white;
+    height: fit-content;
+    padding: 10px 20px; /* Padding reducido */
+}
 
-    /* ===== Estado SCROLL ===== */
-    #site-header.scrolled {
-        background: white;
-    }
+#site-header.scrolled #header-logo {
+    height: 64px; /* Logo más pequeño */
+}
 
-    #site-header.scrolled .header-link {
-        color: black;
-    }
+#site-header.scrolled .header-nav {
+    gap: 16px; /* Menos separación entre enlaces */
+}
 
-    #site-header.scrolled .header-link:hover {
-        color: #555;
-    }
+#site-header.scrolled .header-link {
+    color: black;
+}
 
-    #site-header.scrolled .header-phone {
-        background: black;
-        color: white;
-    }
+#site-header.scrolled .header-link:hover {
+    color: #555;
+}
 
-    #site-header.scrolled .header-phone:hover {
-        background: white;
-        color: black;
-        border: 1px solid black;
-        transform: scale(1.05);
-    }
+#site-header.scrolled .header-phone {
+    background: black;
+    color: white;
+    border: 1px solid black;
+}
 
-    #site-header.scrolled .c-btn {
-        background: black;
-    }
+#site-header.scrolled .header-phone:hover {
+    background: white;
+    color: black;
+    transform: scale(1.05);
+}
 
-    .c-btn {
-        width: 48px;
-        height: 48px;
-        background: black;
-        color: white;
-        border-radius: 9999px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        overflow: hidden;
-        cursor: pointer;
-    }
+/* ===== Botones menú ===== */
+.c-btn {
+    width: 48px;
+    height: 48px;
+    background: black;
+    color: white;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: pointer;
+    transition: width 0.3s, height 0.3s, background 0.3s, color 0.3s;
+}
 
-    .c-btn--light {
-        background: white;
-        color: black;
-    }
+.c-btn--light {
+    background: white;
+    color: black;
+}
 
+#site-header.scrolled .c-btn {
+    background: black;
+    width: 40px;
+    height: 40px; /* Botón ligeramente más pequeño */
+}
 
-    .c-icon {
-        animation: back 0.3s ease forwards;
-    }
+.c-icon {
+    animation: back 0.3s ease forwards;
+}
 
-    .c-btn:hover .c-icon {
-        animation: forward 0.3s ease forwards;
-    }
+.c-btn:hover .c-icon {
+    animation: forward 0.3s ease forwards;
+}
 
-    @keyframes forward {
-        0%   { transform: translateX(0); opacity: 1; }
-        40%  { transform: translateX(120%); }
-        41%  { transform: translateX(-120%); opacity: 0; }
-        100% { transform: translateX(0); opacity: 1; }
-    }
+@keyframes forward {
+    0%   { transform: translateX(0); opacity: 1; }
+    40%  { transform: translateX(120%); }
+    41%  { transform: translateX(-120%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
 
-    @keyframes back {
-        0%   { transform: translateX(0); opacity: 1; }
-        40%  { transform: translateX(-120%); }
-        41%  { transform: translateX(120%); opacity: 0; }
-        100% { transform: translateX(0); opacity: 1; }
-    }
+@keyframes back {
+    0%   { transform: translateX(0); opacity: 1; }
+    40%  { transform: translateX(-120%); }
+    41%  { transform: translateX(120%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+
 </style>
 
 <script>
