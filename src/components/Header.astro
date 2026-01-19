@@ -1,4 +1,4 @@
-<header id="site-header" class="fixed w-full top-0 left-0 z-50 px-10 py-3 transition-colors duration-300">
+<header id="site-header" class="fixed w-full top-0 left-0 z-50 px-10 py-5 transition-colors duration-300">
     <article class="w-full flex items-center justify-between">
         <a href="#">
             <img
@@ -12,19 +12,33 @@
         </a>
 
         <nav class="flex items-center gap-6 header-nav">
-            <!-- <a href="#" class="header-link transition duration-300">Reservas</a> -->
-
-            <a href="#" class="header-phone px-4 rounded-full py-3 flex items-center gap-2 transition duration-300">
+            <a href="#" class="hidden lg:flex header-phone px-4 rounded-full py-3 items-center gap-2 transition duration-300">
                 <i class="fa-solid fa-phone fa-sm"></i>
                 <span>+34 666 332 384</span>
             </a>
 
-            <div class="c-btn">
+            <div id="menu-btn" class="c-btn z-50">
                 <i class="fa-solid fa-bars-staggered fa-lg c-icon"></i>
             </div>
         </nav>
     </article>
 </header>
+
+<div id="mobile-menu" class="fixed top-0 right-0 h-screen w-full lg:w-fit px-14 bg-black z-60 translate-x-full transition-transform duration-500 ease-in-out">
+    <div class="absolute top-10 right-10">
+        <div id="close-menu-btn" class="c-btn c-btn--light">
+            <i class="fa-solid fa-xmark fa-lg c-icon"></i>
+        </div>
+    </div>
+
+    <nav class="h-full flex flex-col items-center justify-center gap-8 text-white text-2xl lg:text-4xl font-light">
+        <a href="#" class="hover:opacity-60 transition">Reservas</a>
+        <a href="#" class="hover:opacity-60 transition">Quiénes somos</a>
+        <a href="#" class="hover:opacity-60 transition">+34 666 332 384</a>
+    </nav>
+</div>
+
+
 
 
 <style>
@@ -93,6 +107,12 @@
         cursor: pointer;
     }
 
+    .c-btn--light {
+        background: white;
+        color: black;
+    }
+
+
     .c-icon {
         animation: back 0.3s ease forwards;
     }
@@ -133,3 +153,25 @@
         }
     });
 </script>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const closeBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    function openMenu() {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+        document.body.classList.add('overflow-hidden');
+    }
+
+    function closeMenu() {
+        mobileMenu.classList.add('translate-x-full');
+        mobileMenu.classList.remove('translate-x-0');
+        document.body.classList.remove('overflow-hidden');
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+</script>
+
