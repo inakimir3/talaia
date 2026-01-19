@@ -137,12 +137,17 @@
 </style>
 
 <script>
-    const header = document.getElementById('site-header');
-    const logo = document.getElementById('header-logo');
+const header = document.getElementById('site-header');
+const logo = document.getElementById('header-logo');
 
-    const logoWhite = logo.dataset.logoWhite;
-    const logoDark = logo.dataset.logoDark;
+const logoWhite = logo.dataset.logoWhite;
+const logoDark = logo.dataset.logoDark;
 
+// Comprobamos si estamos en la home
+const isHome = window.location.pathname === '/' || window.location.pathname.endsWith('index.html');
+
+// ===== Header: scroll solo en home =====
+if (isHome) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
@@ -152,26 +157,31 @@
             logo.src = logoWhite;
         }
     });
+} else {
+    // En otras páginas, aplicamos el estilo "scrolled" por defecto
+    header.classList.add('scrolled');
+    logo.src = logoDark;
+}
+
+// ===== Menú móvil =====
+const menuBtn = document.getElementById('menu-btn');
+const closeBtn = document.getElementById('close-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+function openMenu() {
+    mobileMenu.classList.remove('translate-x-full');
+    mobileMenu.classList.add('translate-x-0');
+    document.body.classList.add('overflow-hidden');
+}
+
+function closeMenu() {
+    mobileMenu.classList.add('translate-x-full');
+    mobileMenu.classList.remove('translate-x-0');
+    document.body.classList.remove('overflow-hidden');
+}
+
+menuBtn.addEventListener('click', openMenu);
+closeBtn.addEventListener('click', closeMenu);
 </script>
 
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    function openMenu() {
-        mobileMenu.classList.remove('translate-x-full');
-        mobileMenu.classList.add('translate-x-0');
-        document.body.classList.add('overflow-hidden');
-    }
-
-    function closeMenu() {
-        mobileMenu.classList.add('translate-x-full');
-        mobileMenu.classList.remove('translate-x-0');
-        document.body.classList.remove('overflow-hidden');
-    }
-
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-</script>
 
