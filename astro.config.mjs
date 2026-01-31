@@ -13,7 +13,7 @@ export default defineConfig({
   adapter: vercel(),
 
   i18n: {
-    locales: ["es", "en", "ca"],
+    locales: ["es", "en",],
     defaultLocale: "es",
     routing:{
       prefixDefaultLocale: false,
