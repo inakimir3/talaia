@@ -44,7 +44,6 @@
 #site-header {
     background: transparent;
     height: fit-content; /* Altura inicial */
-    padding: 10px 40px; /* Padding inicial */
     transition: background 0.3s, height 0.3s, padding 0.3s;
 }
 
@@ -137,9 +136,12 @@
 }
 
 #site-header.scrolled .c-btn {
-    background: #5c6d9b;
-    width: 40px;
-    height: 40px; /* Botón ligeramente más pequeño */
+    @media screen and (max-width: 800px) {
+        
+        background: #5c6d9b;
+        width: 40px;
+        height: 40px; /* Botón ligeramente más pequeño */
+    }
 }
 
 .c-icon {
