@@ -28,7 +28,7 @@ const localizedLink = (path: string) => {
         <img src="/images/llaut-4.webp" alt="Llaut navegando al atardecer cerca de Alcanada" class="opacity-0 group-hover:opacity-100 transition duration-300 absolute z-10 top-0 left-0 w-full h-full  object-cover" />
     </a>
 
-    <a href={localizedLink("/reservas")} data-sal="slide-up" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
+    <a href={getLocalizedRoute("reservas", currentLang)} data-sal="slide-up" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
         <div class="relative z-30 flex flex-col items-center text-center text-balance gap-4 max-w-full lg:max-w-lg px-4 font-thin text-black group-hover:text-white transition duration-300">
             <p class="text-[14px] lg:text-[18px]">{translateLabels("precios2.time")}</p>
             <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">{translateLabels("precios2.title")}</h3>
@@ -46,7 +46,7 @@ const localizedLink = (path: string) => {
         <img src="/images/llaut-1.webp" alt="Llaut navegando al atardecer cerca de Alcanada" class="opacity-0 group-hover:opacity-100 transition duration-300 absolute z-10 top-0 left-0 w-full h-full  object-cover" />
     </a>
 
-    <a href={localizedLink("/reservas")} data-sal="slide-left" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
+    <a href={getLocalizedRoute("reservas", currentLang)} data-sal="slide-left" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
         <div class="relative z-30 flex flex-col items-center text-center text-balance gap-4 max-w-full lg:max-w-lg px-4 font-thin text-black group-hover:text-white transition duration-300">
             <p class="text-[14px] lg:text-[18px]">{translateLabels("precios3.time")}</p>
             <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">{translateLabels("precios3.title")}</h3>
