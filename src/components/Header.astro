@@ -21,8 +21,9 @@ const getLangUrl = (lang: "es" | "en") => {
   const translatedPath = translatePath(currentPath, lang);
 
   if (lang === "es") return translatedPath;
-  return `/${lang}${translatedPath}`;
+  return `/${lang}${translatedPath === "/" ? "" : translatedPath}`;
 };
+
 ---
 
 <header id="site-header" class="fixed w-full top-0 left-0 z-50 px-5 lg:px-10 py-5 transition-colors duration-300">
