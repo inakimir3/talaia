@@ -1,31 +1,38 @@
+---
+import { useTranslations, getLocalizedRoute } from "../i18n/utils";
+import { languages } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLang as keyof typeof languages);
+---
+
 <section data-sal="slide-right" data-sal-duration="500" data-sal-delay="50" data-sal-easing="ease-out-bounce" class=" overflow-hidden px-5 lg:px-10 my-20 lg:my-60 relative flex items-center justify-center w-full">
    
     <article class="flex flex-col justify-center gap-10 px-4 max-w-full lg:max-w-[75%]">
         <div class="flex flex-col gap-4 border-b border-black w-full pb-5">
-            <h4 class="text-[24px] lg:text-[40px] font-light">Menú a bordo</h4>
+            <h4 class="text-[24px] lg:text-[40px] font-light">{translateLabels("preguntas.title1")}</h4>
             <p class="text-[16px] lg:text-[20px] max-w-full lg:max-w-[75%] font-thin leading-6 lg:leading-8">
-                Disfruta de un delicioso pa amb oli, sobrada casera y una selección de embutidos locales mientras navegas por la costa de Mallorca. También podrás disfrutar de agua, refrescos y cervezas.
+                {translateLabels("preguntas.text1")}
             </p>
         </div>
 
         <div class="flex flex-col gap-4 border-b border-black w-full pb-5">
-            <h4 class="text-[24px] lg:text-[40px] font-light">Qué llevar</h4>
+            <h4 class="text-[24px] lg:text-[40px] font-light">{translateLabels("preguntas.title2")}</h4>
             <p class="text-[16px] lg:text-[20px] max-w-full lg:max-w-[75%] font-thin leading-6 lg:leading-8">
-                Te recomendamos traer toalla, protector solar, bañador, gafas de sol y ropa ligera. Si prefieres usar tu propio equipo de snorkel, puedes traerlo, aunque también disponemos de uno a bordo.
+                {translateLabels("preguntas.text2")}
             </p>
         </div>
 
         <div class="flex flex-col gap-4 border-b border-black w-full pb-5">
-            <h4 class="text-[24px] lg:text-[40px] font-light">¿Hay párquing cerca?</h4>
+            <h4 class="text-[24px] lg:text-[40px] font-light">{translateLabels("preguntas.title3")}</h4>
             <p class="text-[16px] lg:text-[20px] max-w-full lg:max-w-[75%] font-thin leading-6 lg:leading-8">
-                Sí, hay un aparcamiento de pago en el puerto de Alcudiamar.
+                {translateLabels("preguntas.text3")}
             </p>
         </div>
 
         <div class="flex flex-col gap-4 border-b border-black w-full pb-5">
-            <h4 class="text-[24px] lg:text-[40px] font-light">¿Puedo traer a mi mascota?</h4>
+            <h4 class="text-[24px] lg:text-[40px] font-light">{translateLabels("preguntas.title4")}</h4>
             <p class="text-[16px] lg:text-[20px] max-w-full lg:max-w-[75%] font-thin leading-6 lg:leading-8">
-                Lo sentimos, pero aunque somos amantes de los animales, no permitimos mascotas a bordo por razones de seguridad y comodidad de todos los pasajeros.
+                {translateLabels("preguntas.text4")}
             </p>
         </div>        
     </article>

@@ -1,16 +1,24 @@
+---
+import { useTranslations, getLocalizedRoute } from "../i18n/utils";
+import { languages } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLang as keyof typeof languages);
+---
+
+
 <section class="overflow-hidden px-5 lg:px-10 grid grid-cols-2 my-20 lg:my-60 gap-5 relative w-full">
     <article data-sal="slide-up" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="relative col-span-2 lg:col-span-1">
         <img src="/images/llaut-1.webp" alt="Imagen de un llaut navegando por la costa de Mallorca" class="shadow-2xl w-[80%] lg:w-2/3 aspect-560/700 object-cover" />
         <img src="/images/llaut-4.webp" alt="Imagen de un llaut navegando por la costa de Mallorca" class="shadow-2xl absolute top-10 lg:top-[120px] right-0 lg:right-[100px] w-1/2 lg:w-[300px] aspect-500/750 object-cover" />
     </article>
     <article data-sal="slide-down" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="mt-12 lg:mt-0 col-span-2 lg:col-span-1 flex flex-col justify-center gap-6 px-4 max-w-full lg:max-w-[750px]">
-        <p class="text-sm tracking-wider font-thin">SOBRE TALAIA</p>
-        <h2 class="text-[30px] lg:text-[56px] font-extralight leading-8 lg:leading-16 tracking-tight">Nuestra forma de vivir el mar: auténtica, tranquila y sin compliaciones.</h2>
+        <p class="text-sm tracking-wider font-thin uppercase">{translateLabels("info3.accent")}</p>
+        <h2 class="text-[30px] lg:text-[56px] font-extralight leading-8 lg:leading-16 tracking-tight">{translateLabels("info3.title")}</h2>
         <p class="font-thin text-[16px] lg:text-[20px] leading-6 lg:leading-8">
-            Talaia nació con la idea de ofrecer un servicio charter auténtico y sin complicaciones en Mallorca. Un llaüt clásico de madera, sencillo y con carácter, pensado para salir al mar con calma y poder disfrutar con tu gente. Nos ocupamos de lo esencial para que tú puedas desconectar, disfrutar de tu compañía y alargar los días de verano desde el agua.
+            {translateLabels("info3.text")}
         </p>
         <a href="https://wa.me/34666332384" target="_blank" class="w-fit flex items-center justify-center gap-4 px-6 py-3 bg-black text-white rounded-full hover:bg-white hover:text-black border border-black transition duration-300">
-            Conócenos
+            {translateLabels("info3.button")}
             <i class="fa-solid fa-arrow-right-long"></i>
         </a>
     </article>

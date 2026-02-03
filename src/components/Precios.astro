@@ -1,14 +1,26 @@
+---
+import { useTranslations, getLocalizedRoute } from "../i18n/utils";
+import { languages } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLang as keyof typeof languages);
+
+const localizedLink = (path: string) => {
+  if (currentLang === "es") return path;
+  return `/${currentLang}${path}`; 
+};
+---
+
 <section class="overflow-hidden px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-3 my-20 lg:my-60 gap-3 lg:gap-5 relative w-full">
-    <a href="/reservas" data-sal="slide-right" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-5 lg:py-10 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
+    <a href={getLocalizedRoute("reservas", currentLang)} data-sal="slide-right" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-5 lg:py-10 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
         <div class="relative z-30 flex flex-col items-center text-center text-balance gap-4 max-w-full lg:max-w-lg px-4 font-thin text-black group-hover:text-white transition duration-300">
-            <p class="text-[14px] lg:text-[18px]">2 horas</p>
-            <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">Puesta de sol en Alcanada</h3>
+            <p class="text-[14px] lg:text-[18px]">{translateLabels("precios1.time")}</p>
+            <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">{translateLabels("precios1.title")}</h3>
             <p class="text-[16px] lg:text-[20px]">
-                Durante 2 horas de navegación, disfrutarás de una experiencia única en barco, combinando la tranquilidad del mar con la belleza incomparable de la costa de Alcanada.            </p>
-            <p class="font-medium text-[24px] lg:text-[32px]">340€</p>
-            <p class="text-[14px] lg:text-[18px]">Precio para grupos de entre 2 y 6 personas.</p>
+                {translateLabels("precios1.description")}            </p>
+            <p class="font-medium text-[24px] lg:text-[32px]">{translateLabels("precios1.price")}</p>
+            <p class="text-[14px] lg:text-[18px]">{translateLabels("precios1.note")}</p>
             <div class="w-fit mt-6 flex items-center justify-center gap-4 px-6 py-3 bg-black text-white rounded-full hover:bg-white hover:text-black border border-black transition duration-300">
-                Reservar
+                {translateLabels("precios1.button")}
                 <i class="fa-solid fa-arrow-right-long"></i>
             </div>
         </div>
@@ -16,17 +28,17 @@
         <img src="/images/llaut-4.webp" alt="Llaut navegando al atardecer cerca de Alcanada" class="opacity-0 group-hover:opacity-100 transition duration-300 absolute z-10 top-0 left-0 w-full h-full  object-cover" />
     </a>
 
-    <a href="/reservas" data-sal="slide-up" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
+    <a href={localizedLink("/reservas")} data-sal="slide-up" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
         <div class="relative z-30 flex flex-col items-center text-center text-balance gap-4 max-w-full lg:max-w-lg px-4 font-thin text-black group-hover:text-white transition duration-300">
-            <p class="text-[14px] lg:text-[18px]">4 horas</p>
-            <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">Explora Alcanada y Coll Baix</h3>
+            <p class="text-[14px] lg:text-[18px]">{translateLabels("precios2.time")}</p>
+            <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">{translateLabels("precios2.title")}</h3>
             <p class="text-[16px] lg:text-[20px]">
-                Disfruta de una excursión privada en barco por dos de los lugares más bonitos y tranquilos de la costa norte de Mallorca.
+                {translateLabels("precios2.description")}
             </p>
-            <p class="font-medium text-[24px] lg:text-[32px]">525€</p>
-            <p class="text-[14px] lg:text-[18px]">Precio para grupos de entre 2 y 6 personas.</p>
+            <p class="font-medium text-[24px] lg:text-[32px]">{translateLabels("precios2.price")}</p>
+            <p class="text-[14px] lg:text-[18px]">{translateLabels("precios2.note")}</p>
             <div class="w-fit mt-6 flex items-center justify-center gap-4 px-6 py-3 bg-black text-white rounded-full hover:bg-white hover:text-black border border-black transition duration-300">
-                Reservar
+                {translateLabels("precios2.button")}
                 <i class="fa-solid fa-arrow-right-long"></i>
             </div>
         </div>
@@ -34,16 +46,17 @@
         <img src="/images/llaut-1.webp" alt="Llaut navegando al atardecer cerca de Alcanada" class="opacity-0 group-hover:opacity-100 transition duration-300 absolute z-10 top-0 left-0 w-full h-full  object-cover" />
     </a>
 
-    <a href="/reservas" data-sal="slide-left" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
+    <a href={localizedLink("/reservas")} data-sal="slide-left" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="group relative py-10 lg:py-20 px-5 flex items-center justify-center overflow-hidden cursor-pointer">
         <div class="relative z-30 flex flex-col items-center text-center text-balance gap-4 max-w-full lg:max-w-lg px-4 font-thin text-black group-hover:text-white transition duration-300">
-            <p class="text-[14px] lg:text-[18px]">6 horas</p>
-            <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">Alcanada, Coll Baix y Cap de Pinar</h3>
+            <p class="text-[14px] lg:text-[18px]">{translateLabels("precios3.time")}</p>
+            <h3 class="text-[28px] lg:text-[40px] font-medium leading-7 lg:leading-12">{translateLabels("precios3.title")}</h3>
             <p class="text-[16px] lg:text-[20px]">
-                Esta excursión de seis horas en barco te permitirá descubrir tres de los lugares más impresionantes y tranquilos de la costa norte de Mallorca.            </p>
-            <p class="font-medium text-[24px] lg:text-[32px]">745€</p>
-            <p class="text-[14px] lg:text-[18px]">Precio para grupos de entre 2 y 6 personas.</p>
+                {translateLabels("precios3.description")}
+            </p>
+            <p class="font-medium text-[24px] lg:text-[32px]">{translateLabels("precios3.price")}</p>
+            <p class="text-[14px] lg:text-[18px]">{translateLabels("precios3.note")}</p>
             <div class="w-fit mt-6 flex items-center justify-center gap-4 px-6 py-3 bg-black text-white rounded-full hover:bg-white hover:text-black border border-black transition duration-300">
-                Reservar
+                {translateLabels("precios3.button")}
                 <i class="fa-solid fa-arrow-right-long"></i>
             </div>
         </div>

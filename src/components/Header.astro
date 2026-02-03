@@ -1,13 +1,33 @@
 ---
-import { useTranslations } from "../i18n/utils";
+import { useTranslations, getLocalizedRoute, translatePath } from "../i18n/utils";
 import { languages } from "../i18n/ui";
+
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
+
+const localizedLink = (path: string) => {
+  if (currentLang === "es") return path;
+  return `/${currentLang}${path}`; 
+};
+
+// ===== Helper cambio idioma =====
+const currentPath = Astro.url.pathname;
+
+const pathWithoutLang = currentLang === "es"
+  ? currentPath
+  : currentPath.replace(`/${currentLang}`, "");
+
+const getLangUrl = (lang: "es" | "en") => {
+  const translatedPath = translatePath(currentPath, lang);
+
+  if (lang === "es") return translatedPath;
+  return `/${lang}${translatedPath}`;
+};
 ---
 
 <header id="site-header" class="fixed w-full top-0 left-0 z-50 px-5 lg:px-10 py-5 transition-colors duration-300">
     <article class="w-full flex items-center justify-between">
-        <a href="/">
+        <a href={localizedLink("/")}>
             <img
                 id="header-logo"
                 src="/images/logo-talaia-white.svg"
@@ -31,7 +51,9 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
     </article>
 </header>
 
+<!-- ===== MOBILE MENU ===== -->
 <div id="mobile-menu" class="fixed top-0 right-0 h-dvh w-full lg:w-fit px-5 lg:px-20 bg-[#5c6d9b] z-60 translate-x-full transition-transform duration-500 ease-in-out">
+
     <div class="absolute top-10 right-10">
         <div id="close-menu-btn" class="c-btn c-btn--light">
             <i class="fa-solid fa-xmark fa-lg c-icon"></i>
@@ -39,43 +61,55 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
     </div>
 
     <nav class="h-full flex flex-col items-center lg:items-start justify-center gap-8 text-white text-4xl font-light">
-        <a href="/reservas" class="hover:opacity-60 transition">{translateLabels("header.bookings")}</a>
-        <a href="https://wa.me/34666332384" target="_blank" class="hover:opacity-60 transition">{translateLabels("header.contact")}</a>
-        <a href="https://www.instagram.com/talaiacharter/" target="_blank" class="hover:opacity-60 transition">Instagram</a>
+
+        <a href={getLocalizedRoute("reservas", currentLang)} class="hover:opacity-60 transition">
+            {translateLabels("header.bookings")}
+        </a>
+
+        <a href="https://wa.me/34666332384" target="_blank" class="hover:opacity-60 transition">
+            {translateLabels("header.contact")}
+        </a>
+
+        <a href="https://www.instagram.com/talaiacharter/" target="_blank" class="hover:opacity-60 transition">
+            Instagram
+        </a>
+
+        <!-- ===== Selector idioma ===== -->
+            {Object.entries(languages)
+            .filter(([lang]) => lang !== currentLang)
+            .map(([lang]) => (
+                <a
+                    href={getLangUrl(lang)}
+                    class="py-2  text-white  transition hover:opacity-60 mt-6 text-3xl"
+                >
+                    {lang === "es" ? "Español" : lang === "en" ? "English" : lang}
+                </a>
+        ))}
+
     </nav>
 </div>
 
-
 <style>
-    /* ===== Header inicial ===== */
 #site-header {
     background: transparent;
-    height: fit-content; /* Altura inicial */
+    height: fit-content;
     transition: background 0.3s, height 0.3s, padding 0.3s;
 }
 
 #header-logo {
-    height: 96px; /* Tamaño inicial */
+    height: 96px;
     transition: height 0.3s;
 }
 
 .header-nav {
-    gap: 24px; /* Espaciado inicial entre elementos del nav */
+    gap: 24px;
     transition: gap 0.3s;
-}
-
-.header-link {
-    color: white;
-}
-
-.header-link:hover {
-    color: black;
 }
 
 .header-phone {
     background: white;
     color: black;
-    transition: background 0.3s, color 0.3s, transform 0.3s, border 0.3s;
+    transition: 0.3s;
 }
 
 .header-phone:hover {
@@ -84,45 +118,28 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
     transform: scale(1.05);
 }
 
-/* ===== Estado SCROLL ===== */
 #site-header.scrolled {
     background: white;
-    height: fit-content;
-    padding: 10px 20px; /* Padding reducido */
-}
-
-#site-header.scrolled #header-logo {
-    @media screen and (max-width: 800px) {
-        
-        height: 64px; /* Logo más pequeño */
+    @media screen and (max-width: 1024px) {
+        padding: 10px 20px;
     }
 }
 
-#site-header.scrolled .header-nav {
-    gap: 16px; /* Menos separación entre enlaces */
+#site-header.scrolled #header-logo {
+    @media screen and (max-width: 1024px) {
+        
+        height: 64px;
+    }
 }
 
-#site-header.scrolled .header-link {
-    color: black;
+#site-header.scrolled .c-btn {
+    @media screen and (max-width: 1024px) {
+        
+        width: 40px;
+        height: 40px;
+    }
 }
 
-#site-header.scrolled .header-link:hover {
-    color: #555;
-}
-
-#site-header.scrolled .header-phone {
-    background: #5c6d9b;
-    color: white;
-    border: 1px solid #5c6d9b;
-}
-
-#site-header.scrolled .header-phone:hover {
-    background: white;
-    color: black;
-    transform: scale(1.05);
-}
-
-/* ===== Botones menú ===== */
 .c-btn {
     width: 48px;
     height: 48px;
@@ -132,9 +149,8 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     cursor: pointer;
-    transition: width 0.3s, height 0.3s, background 0.3s, color 0.3s;
+    transition: 0.3s;
 }
 
 .c-btn--light {
@@ -142,37 +158,19 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
     color: black;
 }
 
-#site-header.scrolled .c-btn {
-    @media screen and (max-width: 800px) {
-        
-        background: #5c6d9b;
-        width: 40px;
-        height: 40px; /* Botón ligeramente más pequeño */
-    }
-}
-
-.c-icon {
-    animation: back 0.3s ease forwards;
-}
-
-.c-btn:hover .c-icon {
-    animation: forward 0.3s ease forwards;
-}
-
 @keyframes forward {
-    0%   { transform: translateX(0); opacity: 1; }
-    40%  { transform: translateX(120%); }
-    41%  { transform: translateX(-120%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0%{transform:translateX(0);opacity:1}
+    40%{transform:translateX(120%)}
+    41%{transform:translateX(-120%);opacity:0}
+    100%{transform:translateX(0);opacity:1}
 }
 
 @keyframes back {
-    0%   { transform: translateX(0); opacity: 1; }
-    40%  { transform: translateX(-120%); }
-    41%  { transform: translateX(120%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0%{transform:translateX(0);opacity:1}
+    40%{transform:translateX(-120%)}
+    41%{transform:translateX(120%);opacity:0}
+    100%{transform:translateX(0);opacity:1}
 }
-
 </style>
 
 <script>
@@ -182,11 +180,9 @@ const logo = document.getElementById('header-logo');
 const logoWhite = logo.dataset.logoWhite;
 const logoDark = logo.dataset.logoDark;
 
-// Comprobamos si estamos en la home
 const segments = window.location.pathname.split('/').filter(Boolean);
 const isHome = segments.length === 0 || (segments.length === 1 && segments[0] === 'en');
 
-// ===== Header: scroll solo en home =====
 if (isHome) {
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -198,12 +194,10 @@ if (isHome) {
         }
     });
 } else {
-    // En otras páginas, aplicamos el estilo "scrolled" por defecto
     header.classList.add('scrolled');
     logo.src = logoDark;
 }
 
-// ===== Menú móvil =====
 const menuBtn = document.getElementById('menu-btn');
 const closeBtn = document.getElementById('close-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
@@ -222,6 +216,9 @@ function closeMenu() {
 
 menuBtn.addEventListener('click', openMenu);
 closeBtn.addEventListener('click', closeMenu);
+
+// cerrar menú al hacer click en links
+document.querySelectorAll('#mobile-menu a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+});
 </script>
-
-

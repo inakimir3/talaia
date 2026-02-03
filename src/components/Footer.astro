@@ -1,18 +1,30 @@
+---
+import { useTranslations, getLocalizedRoute } from "../i18n/utils";
+import { languages } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLang as keyof typeof languages);
+const localizedLink = (path: string) => {
+  if (currentLang === "es") return path;
+  return `/${currentLang}${path}`; 
+};
+---
+
+
 <footer class="bg-[#5c6d9b] text-white w-full">
     <div class="flex flex-col lg:flex-row gap-10 items-center justify-between py-10 lg:py-20 px-5 lg:px-20">
-        <a href="/">
+        <a href={localizedLink("/")}>
             <img src="/images/logo-talaia-white.svg" alt="Logo de Talaia" class="h-32" />
         </a>
         <article class="flex flex-col lg:flex-row gap-5 lg:gap-20">
             <div class="flex flex-col gap-0 font-thin text-[14px] lg:text-[18px]">
-                <p class="font-light text-[18px] lg:text-[24px] mb-2 lg:mb-4">Más información</p>
-                <a href="/reservas">Reservas</a>
-                <a href="/cancelacion-y-devolucion">Política de cancelación y devolución</a>
+                <p class="font-light text-[18px] lg:text-[24px] mb-2 lg:mb-4">{translateLabels("footer.title1")}</p>
+                <a href={getLocalizedRoute("reservas", currentLang)}>{translateLabels("footer.link1")}</a>
+                <a href={getLocalizedRoute("cancelacion", currentLang)}>{translateLabels("footer.link2")}</a>
             </div>
             <div class="flex flex-col gap-0 font-thin text-[14px] lg:text-[18px]">
-                <p class="font-light text-[18px] lg:text-[24px] mb-2 lg:mb-4">Contáctanos</p>
-                <a href="https://wa.me/34666332384" target="_blank">Whatsapp</a>
-                <a href="https://www.instagram.com/talaiacharter/" target="_blank">Instagram</a>
+                <p class="font-light text-[18px] lg:text-[24px] mb-2 lg:mb-4">{translateLabels("footer.title2")}</p>
+                <a href="https://wa.me/34666332384" target="_blank">{translateLabels("footer.link3")}</a>
+                <a href="https://www.instagram.com/talaiacharter/" target="_blank">{translateLabels("footer.link4")}</a>
             </div>
         </article>
     </div>

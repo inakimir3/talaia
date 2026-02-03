@@ -1,13 +1,19 @@
+---
+import { useTranslations, getLocalizedRoute } from "../i18n/utils";
+import { languages } from "../i18n/ui";
+const currentLang = Astro.currentLocale || "es";
+const translateLabels = useTranslations(currentLang as keyof typeof languages);
+---
+
 <section class="overflow-hidden px-5 lg:px-10 grid grid-cols-1 lg:grid-cols-2 my-20 lg:my-60 gap-5 relative w-full">
-    
     <article data-sal="slide-down" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="flex flex-col justify-center gap-6 px-4 max-w-[750px]">
-        <p class="text-sm tracking-wider font-thin">LLAUT TRADICIONAL</p>
-        <h2 class="text-[30px] lg:text-[56px] font-extralight leading-8 lg:leading-16 tracking-tight">Llaut Talaia, tu embarcación ideal para disfrutar de la costa de Mallorca</h2>
+        <p class="text-sm tracking-wider font-thin uppercase">{translateLabels("info2.accent")}</p>
+        <h2 class="text-[30px] lg:text-[56px] font-extralight leading-8 lg:leading-16 tracking-tight">{translateLabels("info2.title")}</h2>
         <p class="font-thin text-[16px] lg:text-[20px] leading-6 lg:leading-8">
-            Una embarcación tradicional mallorquina, perfecta para un alquiler de barco en Mallorca. Explora la costa norte, descubre calas escondidas y disfruta de un día inolvidable bajo el sol mediterráneo.
+            {translateLabels("info2.text")}
         </p>
         <a href="https://wa.me/34666332384" target="_blank" class="w-fit flex items-center justify-center gap-4 px-6 py-3 bg-black text-white rounded-full hover:bg-white hover:text-black border border-black transition duration-300">
-            Reserva ahora
+            {translateLabels("info2.button")}
             <i class="fa-solid fa-arrow-right-long"></i>
         </a>
     </article>

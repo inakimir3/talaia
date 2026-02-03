@@ -1,5 +1,5 @@
 ---
-import { useTranslations } from "../i18n/utils";
+import { useTranslations, getLocalizedRoute } from "../i18n/utils";
 import { languages } from "../i18n/ui";
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
@@ -11,7 +11,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
         <img src="/images/llaut-2.webp" alt="Imagen de un llaut navegando por la costa de Mallorca" class="shadow-2xl absolute top-10 lg:top-[120px] right-0 lg:right-[100px] w-1/2 lg:w-[300px] aspect-500/750 object-cover" />
     </article>
     <article data-sal="slide-down" data-sal-duration="800" data-sal-delay="200" data-sal-easing="ease-out-bounce" class="mt-12 lg:mt-0 col-span-2 lg:col-span-1 flex flex-col justify-center gap-6 px-4 max-w-full lg:max-w-[750px]">
-        <p class="text-sm tracking-wider font-thin">{translateLabels("info.accent")}</p>
+        <p class="text-sm uppercase tracking-wider font-thin">{translateLabels("info.accent")}</p>
         <h2 class="text-[30px] lg:text-[56px] font-extralight leading-8 lg:leading-16 tracking-tight">{translateLabels("info.title")}</h2>
         <p class="font-thin text-[16px] lg:text-[20px] leading-6 lg:leading-8">
             {translateLabels("info.text")}
