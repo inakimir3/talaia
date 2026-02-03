@@ -7,6 +7,7 @@ import { useTranslations } from "../i18n/utils";
 import { languages } from "../i18n/ui";
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
+import Analytics from '@vercel/analytics/astro'
 ---
 
 <!doctype html>
@@ -39,6 +40,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
 		</script>
 	</head>
 	<body>
+		<Analytics/>
         <slot />
 		<script>
 			import sal from "sal.js";
