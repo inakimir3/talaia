@@ -34,26 +34,37 @@ export const getLocalizedRoute = (
   return `/${lang}${route}`;
 };
 
-export function translatePath(path: string, targetLang: "es" | "en") {
-  // quitar idioma
-  let cleanPath = path.replace(/^\/(en)(?=\/|$)/, "");
+export function translatePath(
+  path: string,
+  currentLang: "es" | "en",
+  targetLang: "es" | "en"
+) {
+  // Normalizar path
+  let cleanPath = path;
 
-  // asegurar formato consistente
-  cleanPath = cleanPath || "/";
-  if (!cleanPath.startsWith("/")) cleanPath = "/" + cleanPath;
-
-  // quitar trailing slash excepto home
+  // quitar trailing slash
   if (cleanPath.length > 1) {
     cleanPath = cleanPath.replace(/\/$/, "");
   }
 
+  // Si idioma actual es inglés, quitar /en
+  if (currentLang === "en" && cleanPath.startsWith("/en")) {
+    cleanPath = cleanPath.replace(/^\/en/, "") || "/";
+  }
+
+  // Buscar coincidencia
   for (const route of Object.values(routes)) {
-    if (route.es === cleanPath || route.en === cleanPath) {
+    if (
+      route[currentLang] === cleanPath ||
+      route.es === cleanPath ||
+      route.en === cleanPath
+    ) {
       return route[targetLang];
     }
   }
 
   return cleanPath;
 }
+
 
 

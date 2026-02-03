@@ -18,11 +18,16 @@ const pathWithoutLang = currentLang === "es"
   : currentPath.replace(`/${currentLang}`, "");
 
 const getLangUrl = (lang: "es" | "en") => {
-  const translatedPath = translatePath(currentPath, lang);
+  const translated = translatePath(
+    currentPath,
+    currentLang as "es" | "en",
+    lang
+  );
 
-  if (lang === "es") return translatedPath;
-  return `/${lang}${translatedPath === "/" ? "" : translatedPath}`;
+  if (lang === "es") return translated;
+  return `/${lang}${translated === "/" ? "" : translated}`;
 };
+
 
 ---
 
