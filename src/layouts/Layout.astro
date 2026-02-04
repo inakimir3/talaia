@@ -8,6 +8,7 @@ import { useTranslations } from "../i18n/utils";
 import { languages } from "../i18n/ui";
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
+import "flag-icons/css/flag-icons.min.css";
 import Analytics from '@vercel/analytics/astro'
 ---
 

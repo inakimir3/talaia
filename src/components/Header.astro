@@ -50,10 +50,20 @@ const getLangUrl = (lang: "es" | "en") => {
                 <span>+34 666 332 384</span>
             </a>
 
+            <div class="flex items-center gap-4 text-xl">
+                <a href={getLangUrl("es")} class="hover:opacity-60 transition">
+                    <span class="fi fi-es"></span>
+                </a>
+                
+                <a href={getLangUrl("en")} class="hover:opacity-60 transition">
+                    <span class="fi fi-gb"></span>
+                </a>
+            </div>
             <div id="menu-btn" class="c-btn z-50">
                 <i class="fa-solid fa-bars-staggered fa-lg c-icon"></i>
             </div>
         </nav>
+        
     </article>
 </header>
 
@@ -81,16 +91,18 @@ const getLangUrl = (lang: "es" | "en") => {
         </a>
 
         <!-- ===== Selector idioma ===== -->
-            {Object.entries(languages)
-            .filter(([lang]) => lang !== currentLang)
-            .map(([lang]) => (
-                <a
-                    href={getLangUrl(lang)}
-                    class="py-2  text-white  transition hover:opacity-60 mt-6 text-3xl"
-                >
-                    {lang === "es" ? "Español" : lang === "en" ? "English" : lang}
-                </a>
-        ))}
+        <div class="lg:hidden flex items-center gap-4 mt-6 text-3xl">
+            <a href={getLangUrl("es")} class="hover:opacity-60 transition">
+                <span class="fi fi-es"></span>
+            </a>
+
+            <a href={getLangUrl("en")} class="hover:opacity-60 transition">
+                <span class="fi fi-gb"></span>
+            </a>
+        </div>
+
+
+        
 
     </nav>
 </div>
