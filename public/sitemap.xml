@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset 
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://talaiacharter.com/</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://talaiacharter.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://talaiacharter.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talaiacharter.com/"/>
+  </url>
+
+  <url>
+    <loc>https://talaiacharter.com/en/</loc>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://talaiacharter.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://talaiacharter.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talaiacharter.com/"/>
+  </url>
+
+  <url>
+    <loc>https://talaiacharter.com/reservas</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://talaiacharter.com/reservas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://talaiacharter.com/en/bookings"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talaiacharter.com/reservas"/>
+  </url>
+
+  <url>
+    <loc>https://talaiacharter.com/en/bookings</loc>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://talaiacharter.com/reservas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://talaiacharter.com/en/bookings"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://talaiacharter.com/en/bookings"/>
+  </url>
+
+</urlset>
