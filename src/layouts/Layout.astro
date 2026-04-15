@@ -6,29 +6,37 @@ import '@fontsource-variable/playfair-display';
 import "sal.js/dist/sal.css";
 import { useTranslations } from "../i18n/utils";
 import { languages } from "../i18n/ui";
+import "flag-icons/css/flag-icons.min.css";
+import Analytics from '@vercel/analytics/astro';
+
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
-import "flag-icons/css/flag-icons.min.css";
-import Analytics from '@vercel/analytics/astro'
+
+const canonicalURL = new URL(Astro.url.pathname, "https://talaiacharter.com/");
 ---
 
 <!doctype html>
 <html lang={currentLang}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="Talaia" />
-		<link rel="manifest" href="/site.webmanifest" />
-		<title>{translateLabels("meta.title")}</title>
-		<meta name="description" content={translateLabels("meta.description")} />
-		<script src="https://kit.fontawesome.com/44dc33ce77.js" crossorigin="anonymous"></script>
-		<meta name="google-site-verification" content="uusVoxO57IFU-08Q8S2Yas07LatvEuhx43ZbyqFhZdM" />
-	</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        
+        <meta name="apple-mobile-web-app-title" content="Talaia" />
+        <link rel="manifest" href="/site.webmanifest" />
+
+        <link rel="canonical" href={canonicalURL} />
+
+        <title>{translateLabels("meta.title")}</title>
+        <meta name="description" content={translateLabels("meta.description")} />
+
+        <script src="https://kit.fontawesome.com/44dc33ce77.js" crossorigin="anonymous"></script>
+        <meta name="google-site-verification" content="uusVoxO57IFU-08Q8S2Yas07LatvEuhx43ZbyqFhZdM" />
+    </head>
 	<body>
 		<Analytics/>
         <slot />
