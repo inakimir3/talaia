@@ -12,7 +12,6 @@ import Analytics from '@vercel/analytics/astro';
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
 
-const canonicalURL = new URL(Astro.url.pathname, "https://talaiacharter.com/");
 ---
 
 <!doctype html>
@@ -22,14 +21,16 @@ const canonicalURL = new URL(Astro.url.pathname, "https://talaiacharter.com/");
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
 
-        <link rel="icon" href="/favicon.ico" sizes="48x48" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         
         <meta name="apple-mobile-web-app-title" content="Talaia" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <link rel="canonical" href={canonicalURL} />
+        <link rel="alternate" hreflang="es" href="https://talaiacharter.com/" />
+        <link rel="alternate" hreflang="en" href="https://talaiacharter.com/en/" />
+        <link rel="alternate" hreflang="x-default" href="https://talaiacharter.com/" />
 
         <title>{translateLabels("meta.title")}</title>
         <meta name="description" content={translateLabels("meta.description")} />
