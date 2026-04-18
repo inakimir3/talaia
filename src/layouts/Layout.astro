@@ -27,9 +27,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
         <meta name="apple-mobile-web-app-title" content="Talaia" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <link rel="alternate" hreflang="es" href="https://talaiacharter.com/" />
-        <link rel="alternate" hreflang="en" href="https://talaiacharter.com/en/" />
-        <link rel="alternate" hreflang="x-default" href="https://talaiacharter.com/" />
+        <link rel="canonical" href="https://talaiacharter.com/" />
 
         <title>{translateLabels("meta.title")}</title>
         <meta name="description" content={translateLabels("meta.description")} />
