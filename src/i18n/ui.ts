@@ -69,9 +69,9 @@ export const labels = {
         "cancelacion.accent": "Cancelación y devolución",
         "cancelacion.title": "Política de cancelación y devolución",
         "cancelacion.client.title": "Cancelación por parte del cliente",
-        "cancelacion.client.text": "Si la cancelación se realiza con más de 7 días de antelación a la fecha de la reserva, se reembolsará el depósito completo. <br> No se realizarán reembolsos por cancelaciones con menos de 7 días de antelación.",
+        "cancelacion.client.text": "Si la cancelación se realiza con más de 7 días de antelación a la fecha de la reserva, se reembolsará el depósito completo. No se realizarán reembolsos por cancelaciones con menos de 7 días de antelación.",
         "cancelacion.tiempo.title": "Cancelación por condiciones meteorológicas",
-        "cancelacion.tiempo.text": "Si el tour no puede realizarse debido a mal tiempo, intentaremos reprogramarlo para otra fecha disponible. <br> Si no es posible encontrar una nueva fecha, se procederá al reembolso total del depósito.",
+        "cancelacion.tiempo.text": "Si el tour no puede realizarse debido a mal tiempo, intentaremos reprogramarlo para otra fecha disponible. Si no es posible encontrar una nueva fecha, se procederá al reembolso total del depósito.",
         "cancelacion.contacto.text": "Para cualquier consulta sobre cancelaciones o cambios en la reserva, no dudes en contactarnos.",
 
 
@@ -141,9 +141,9 @@ export const labels = {
         "cancelacion.accent": "Cancellation and refund",
         "cancelacion.title": "Cancellation and refund policy",
         "cancelacion.client.title": "Cancellation by the client",
-        "cancelacion.client.text": "If the cancellation is made more than 7 days before the reservation date, the full deposit will be refunded. <br> No refunds will be made for cancellations made less than 7 days in advance.",
+        "cancelacion.client.text": "If the cancellation is made more than 7 days before the reservation date, the full deposit will be refunded. No refunds will be made for cancellations made less than 7 days in advance.",
         "cancelacion.tiempo.title": "Cancellation due to weather conditions",
-        "cancelacion.tiempo.text": "If the tour cannot be carried out due to bad weather, we will try to reschedule it for another available date. <br> If it is not possible to find a new date, a full refund of the deposit will be made.",
+        "cancelacion.tiempo.text": "If the tour cannot be carried out due to bad weather, we will try to reschedule it for another available date. If it is not possible to find a new date, a full refund of the deposit will be made.",
         "cancelacion.contacto.text": "For any inquiries about cancellations or changes to the reservation, do not hesitate to contact us.",
     },
     
