@@ -9,6 +9,8 @@ import { languages } from "../i18n/ui";
 import "flag-icons/css/flag-icons.min.css";
 import Analytics from '@vercel/analytics/astro';
 
+const { canonical } = Astro.props;
+
 const currentLang = Astro.currentLocale || "es";
 const translateLabels = useTranslations(currentLang as keyof typeof languages);
 
@@ -27,7 +29,7 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
         <meta name="apple-mobile-web-app-title" content="Talaia" />
         <link rel="manifest" href="/site.webmanifest" />
 
-        <link rel="canonical" href="https://www.talaiacharter.com/" />
+        <link rel="canonical" href={canonical} />
 
         <title>{translateLabels("meta.title")}</title>
         <meta name="description" content={translateLabels("meta.description")} />
