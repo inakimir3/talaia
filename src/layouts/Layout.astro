@@ -19,6 +19,14 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
 <!doctype html>
 <html lang={currentLang}>
     <head>
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-TJWD3PPK');
+		</script>
+		<!-- End Google Tag Manager -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
@@ -38,6 +46,13 @@ const translateLabels = useTranslations(currentLang as keyof typeof languages);
         <meta name="google-site-verification" content="uusVoxO57IFU-08Q8S2Yas07LatvEuhx43ZbyqFhZdM" />
     </head>
 	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<noscript>
+			<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJWD3PPK"
+					height="0" width="0" style="display:none;visibility:hidden">
+			</iframe>
+		</noscript>
+		<!-- End Google Tag Manager (noscript) -->
 		<Analytics/>
         <slot />
 		<script>
